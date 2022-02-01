@@ -12,21 +12,30 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     public void login(){
-
+        Intent login = new Intent(this, RoomList.class);
         EditText email = findViewById(R.id.email);
         EditText pwd = findViewById(R.id.password);
-        AndroidNetworking.post("https://fierce-cove-29863.herokuapp.com/getAllUsers/{pageNumber}")
-                .addBodyParameter("email",email.getText().toString())
+        AndroidNetworking.post("https://myhouse.lesmoulinsdudev.com/auth")
+                .addBodyParameter("login",email.getText().toString())
                 .addBodyParameter("password",pwd.getText().toString())
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        String token = null;
+                        try {
+                            token = response.getString("token");
+                            login.putExtra("tokenID", token);
+                            startActivity(login);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
 
@@ -41,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
     public void onRegisterClicked(View view){
         Intent register = new Intent(this, Register.class);
         startActivity(register);
+    }
 
-
+    public void onLoginClicked(View view){
+        login();
     }
 
     @Override
