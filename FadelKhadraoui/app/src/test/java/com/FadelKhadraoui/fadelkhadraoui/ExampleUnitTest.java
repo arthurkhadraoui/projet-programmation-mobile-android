@@ -1,4 +1,4 @@
-package com.FadelKhadraoui.login;
+package com.fadelkhadraoui.fadelkhadraoui;
 
 import org.junit.Test;
 

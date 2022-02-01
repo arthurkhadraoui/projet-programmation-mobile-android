@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Register">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -17,18 +17,27 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="DomotApp"
+            android:text="Creer un compte"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="34sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/nameregister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:hint="Nom"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/emailregister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -39,27 +48,21 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/pwdregister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:width="300dp"
             android:ems="10"
             android:hint="Mot de passe"
             android:inputType="textPassword"
             android:minHeight="48dp" />
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Connexion" />
-
-        <Button
-            android:id="@+id/register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onRegisterClicked"
+            android:layout_margin="10dp"
+            android:onClick="onRegisterclicked"
             android:text="Inscription" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

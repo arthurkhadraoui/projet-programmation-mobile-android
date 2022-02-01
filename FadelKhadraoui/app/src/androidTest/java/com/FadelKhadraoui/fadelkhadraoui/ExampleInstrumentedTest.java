@@ -1,4 +1,4 @@
-package com.FadelKhadraoui.login;
+package com.fadelkhadraoui.fadelkhadraoui;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.FadelKhadraoui.login", appContext.getPackageName());
+        assertEquals("com.fadelkhadraoui.fadelkhadraoui", appContext.getPackageName());
     }
 }
