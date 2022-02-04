@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 
 public class RoomList extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent i = getIntent();
@@ -27,6 +30,17 @@ public class RoomList extends AppCompatActivity {
         getPics("room");
         getRooms(userToken);
     }
+
+
+
+    public void newRoom(View view){
+        Intent i = getIntent();
+        String tokenId = i.getStringExtra("tokenID");
+        Intent newRoom = new Intent(this,CreerPiece.class);
+        newRoom.putExtra("tokenId",tokenId);
+        startActivity(newRoom);
+    }
+
 
     public void getPics(String type){
         ArrayList pictures = new ArrayList();
@@ -51,6 +65,8 @@ public class RoomList extends AppCompatActivity {
                 });
 
     }
+
+
 
     public void getRooms(String tokenId){
 

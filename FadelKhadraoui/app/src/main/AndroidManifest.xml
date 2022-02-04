@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FadelKhadraoui">
         <activity
+            android:name=".CreerPiece"
+            android:exported="false" />
+        <activity
             android:name=".RoomList"
             android:exported="false" />
         <activity
