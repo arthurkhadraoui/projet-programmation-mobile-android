@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -37,7 +38,7 @@ public class RoomList extends AppCompatActivity {
         Intent i = getIntent();
         String tokenId = i.getStringExtra("tokenID");
         Intent newRoom = new Intent(this,CreerPiece.class);
-        newRoom.putExtra("tokenId",tokenId);
+        newRoom.putExtra("tokenID",tokenId);
         startActivity(newRoom);
     }
 
@@ -69,7 +70,7 @@ public class RoomList extends AppCompatActivity {
 
 
     public void getRooms(String tokenId){
-
+        ListView roomList = findViewById(R.id.roomList);
         AndroidNetworking.get("https://myhouse.lesmoulinsdudev.com/rooms")
                 .addHeaders("Authorization","Bearer "+tokenId)
                 .build()
@@ -78,6 +79,8 @@ public class RoomList extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             JSONArray rooms = response.getJSONArray("rooms");
+                            RoomAdapter orderAdapter = new RoomAdapter(RoomList.this,R.layout.rooms,rooms);
+                            roomList.setAdapter(orderAdapter);
 
                         } catch (JSONException e) {
                             e.printStackTrace();

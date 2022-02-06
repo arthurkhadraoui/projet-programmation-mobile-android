@@ -30,10 +30,13 @@ public class CreerPiece extends AppCompatActivity {
     public void createRoom(){
         Spinner pic = findViewById(R.id.spinner);
         EditText name = findViewById(R.id.roomName);
+        Intent i = getIntent();
+        String userToken = i.getStringExtra("tokenID");
         Intent roomList = new Intent(this, RoomList.class);
         AndroidNetworking.post("https://myhouse.lesmoulinsdudev.com/room-create")
+                .addHeaders("Authorization","Bearer "+userToken)
                 .addBodyParameter("name",name.getText().toString())
-                .addBodyParameter("idPicture",null)
+                .addBodyParameter("idPicture","1")
                 .build()
                 .getAsOkHttpResponse(new OkHttpResponseListener() {
                     @Override
@@ -42,7 +45,7 @@ public class CreerPiece extends AppCompatActivity {
                             case 200:
                                 Toast toastSuccess = Toast.makeText(CreerPiece.this,"Pièce créée",Toast.LENGTH_SHORT);
                                 toastSuccess.show();
-
+                                roomList.putExtra("tokenID",userToken);
                                 startActivity(roomList);
                                 break;
                             default:
